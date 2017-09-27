@@ -1,0 +1,53 @@
+/* ---------------------------------------------------------
+                      Buttons
+   ---------------------------------------------------------*/
+.button {
+	display: inline-block;
+	border: none;
+	color: $btn-color;
+	text-decoration: none;
+	background-color: $btn-background;
+	padding: 8px 30px;
+	font-size: 1em;
+	text-transform: uppercase;
+	font-weight: 600;
+  	font-family: $btn-font-family;
+	border-radius: 2px;
+	text-align: center;
+	position: relative;
+	outline: none;
+	transition: backgroundnd-color .25s ease;
+
+	&::after {
+	  content: '';
+	  position: absolute;
+	  left: 0;
+	  bottom: 0;
+	  height: 3px;
+	  width: 100%;
+	  background-color: darken($btn-background, 10%);
+	  border-bottom-right-radius: 2px;
+	  border-bottom-left-radius: 2px;
+	  transition: background-color .25s ease;
+	}
+
+	&:focus, &:hover {
+	    text-decoration: none;
+	    color: $btn-color;
+	}
+	&:hover {
+	    background-color: lighten($btn-background, 12%);
+	  	color: lighten($btn-color, 10%);
+	}
+	&:active {
+	    background-color: darken($btn-background, 10%);
+	}
+
+  	&.button_small {
+	  font-size: 0.875em;
+	  padding: 6px 22px;
+	  &::after {
+		height: 3px;
+	  }
+	}
+}

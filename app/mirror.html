@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru" class=" js flexbox flexboxlegacy canvas canvastext webgl touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths webkit chrome linux js">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Mirror</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="img/favicon/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-touch-icon-72x72.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-touch-icon-114x114.png">
+
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#000">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#000">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000">
+
+	<style>body { opacity: 0; overflow-x: hidden; } html { background-color: #fff; }</style>
+
+</head>
+
+<body class="mirror">
+
+    <!-- Preloader -->
+    <div class="page-preloader">
+        <svg class="preloader" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="75px" height="75px" version="1.1"
+             style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality;
+             fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 7500 7500" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+           <defs>
+              <style type="text/css">
+                .south {fill:#003399}
+                .north {fill:red}
+                .border {fill:gray;fill-rule:nonzero}
+              </style>
+           </defs>
+
+           <g id="arrows">
+               <animateTransform attributeName="transform" type="rotate" from="0 3750 3750" to="360 3750 3750" dur="1.5s" repeatCount="indefinite"/>
+               <polygon class="north" points="4417,1268 4494,2617 4563,3966 3750,3750 2937,3534 3674,2401 "/>
+               <polygon class="south" points="3083,6232 3006,4883 2937,3534 3750,3750 4563,3966 3826,5099 "/>
+           </g>
+           <g>
+              <path class="border" d="M3750 0c1035,0 1972,420 2655,1095 675,682 1095,1620 1095,2655 0,1035 -420,1972 -1095,2655 -682,675 -1620,1095 -2655,1095 -1035,0 -1972,-420 -2655,-1095 -675,-682 -1095,-1620 -1095,-2655 0,-1035 420,-1972 1095,-2655 682,-675 1620,-1095 2655,-1095zm0 909l-170 -350c-817,43 -1547,393 -2088,933 -540,541 -890,1271 -933,2088l350 170 -350 170c43,817 393,1547 933,2088 541,540 1271,890 2088,933l170 -350 170 350c817,-43 1547,-393 2088,-933 540,-541 890,-1271 933,-2088l-350 -170 350 -170c-43,-817 -393,-1547 -933,-2088 -541,-540 -1271,-890 -2088,-933l-170 350z"/>
+           </g>
+        </svg>
+    </div>
+
+    <!-- Mirror effect -->
+    <div>
+        <main class="mirror__main">
+            <blockquote>“The only way to get rid of a temptation is to yield to it. Resist it, and your soul grows sick with longing for the things it has forbidden to itself, with desire for what its monstrous laws have made monstrous and unlawful.”</em>
+                <footer>— <cite>Oscar Wilde, The Picture of Dorian Gray</cite></footer>
+            </blockquote>
+        </main>
+    </div>
+
+
+
+                                                <!-- Scripts -->
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+
+	<link rel="stylesheet" href="css/style.min.css">
+	<script src="js/scripts.min.js"></script>
+
+</body>
+</html>
