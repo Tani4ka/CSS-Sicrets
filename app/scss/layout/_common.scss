@@ -1131,13 +1131,76 @@ input {
 
 /* Frame-by-frame animations */
 
-@keyframes loader {
-  to { background-position: -800px 0; }
-}
+//@keyframes loader {
+//  to { background-position: -800px 0; }
+//}
 
 .loader {
   width: 100px; height: 100px;
   text-indent: 999px; overflow: hidden; /* Hide text */
   background: url(http://dabblet.com/img/loader.png) 0 0;
   animation: loader 1s infinite steps(8);
+}
+
+
+/* Blinking */
+
+@keyframes blink-1 { 50% { color: transparent } }
+@keyframes blink-2 { to { color: transparent } }
+
+.blinking {
+  padding: 0.5em;
+  background: gold;
+  margin-bottom: 0;
+}
+.blink-smooth-1 {
+  animation: 1s blink-1 3;
+}
+.blink-smooth-2 {
+  animation: .5s blink-2 6;
+  animation-direction: alternate;
+}
+.blink {
+  animation: 1s blink-1 3 steps(1);
+}
+
+
+/* Typing animation (with js if without width: 15ch, for browsers support) */
+
+@keyframes typing {
+  from { width: 0 }
+}
+@keyframes caret {
+  50% { border-right-color: transparent; }
+}
+
+.typing {
+  font: bold 100% Consolas, Monaco, monospace;
+  //width: 15ch;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: .05em solid;
+  animation: typing 8s steps(15),
+  caret 1s steps(1) infinite;
+}
+
+
+/* Smooth state animations
+ * Photo credits: https://www.flickr.com/photos/employtheskinnyboy/3904743709 */
+
+@keyframes panoramic {
+  to { background-position: 100% 0; }
+}
+
+.panoramic {
+  width: 150px;
+  height: 150px;
+  background: url('http://c3.staticflickr.com/3/2671/3904743709_74bc76d5ac_b.jpg');
+  background-size: auto 100%;
+  animation: panoramic 10s linear infinite alternate;
+  animation-play-state: paused;
+}
+
+.panoramic:hover, .panoramic:focus {
+  animation-play-state: running;
 }

@@ -128,7 +128,7 @@ $(function() {
         colors.unshift(color);
         li.style.background = color;
         palette.insertBefore(li, template.nextSibling);
-    }
+    };
 
     palette.onclick = function(evt) {
         var button = evt.target;
@@ -140,6 +140,16 @@ $(function() {
             var li = button.parentNode.parentNode;
             li.parentNode.removeChild(li);
         }
-    }
+    };
+
+
+    /* Typing animation  */
+
+    $$('.typing').forEach(function(h1) {
+        var len = h1.textContent.length, s = h1.style;
+        s.width = len + 'ch';
+        s.animationTimingFunction = "steps("+len+"),steps(1)";
+    });
+
 
 });
