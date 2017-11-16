@@ -119,55 +119,60 @@ section {
   padding: 0;
 }
                             /* Simple sector diagrams */
+/** Static pie charts */
+
 .pie {
-  position: relative;
+  margin: 0 auto;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   background: yellowgreen;
-  background-image: linear-gradient(to right, transparent 50%, #655 0);
-  color: transparent;
-  text-align: center;
-  margin: 0 auto;
-}
-
-@keyframes spin {
-  to { transform: rotate(.5turn); }
-}
-
-@keyframes bg {
-  50% { background: #655; }
+  background-image: linear-gradient(to right, transparent 50%, currentColor 0);
+  color: #655;
 }
 
 .pie::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
+  display: block;
+  margin-left: 50%;
   height: 100%;
   border-radius: 0 100% 100% 0 / 50%;
   background-color: inherit;
   transform-origin: left;
-  animation: spin 5s linear infinite, bg 10s step-end infinite;
-  animation-play-state: paused;
-  animation-delay: inherit;
+  animation: spinn 3s linear infinite, bg 6s step-end infinite;
 }
-                                 /* SVG sector diagrams */
-  .svg-diagram {
-    width: 100px;
-    height: 100px;
-    transform: rotate(-90deg);
-    background: yellowgreen;
-    border-radius: 50%;
-  }
 
-  circle {
-    fill: yellowgreen;
-    stroke: #655;
-    stroke-width: 32;
-    stroke-dasharray: 38 100; /* для 38% */
-  }
+@keyframes spinn {
+  to { transform: rotate(180deg); }
+}
+@keyframes bg {
+  50% { background: currentColor; }
+}
+
+/* With SVG */
+
+.pie1 {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  margin: 10px;
+  transform: rotate(-90deg);
+}
+svg {
+  background: yellowgreen;
+  border-radius: 50%;
+}
+circle {
+  fill: yellowgreen;
+  stroke: #655;
+  stroke-width: 32;
+}
+
+@keyframes grow { to { stroke-dasharray: 100 100 } }
+
+.pie1.animated circle {
+  animation: grow 10s infinite linear;
+}
 
 
                           /* Tabs in the form of a trapezoid */
@@ -1131,9 +1136,9 @@ input {
 
 /* Frame-by-frame animations */
 
-//@keyframes loader {
-//  to { background-position: -800px 0; }
-//}
+@keyframes loader {
+  to { background-position: -800px 0; }
+}
 
 .loader {
   width: 100px; height: 100px;
@@ -1203,4 +1208,61 @@ input {
 
 .panoramic:hover, .panoramic:focus {
   animation-play-state: running;
+}
+
+
+/* Animation along a circular path */
+
+@keyframes spin {
+  from {
+    transform: rotate(0turn)
+    translateY(-80px) translateY(50%)
+    rotate(1turn)
+  }
+  to {
+    transform: rotate(1turn)
+    translateY(-80px) translateY(50%)
+    rotate(0turn);
+  }
+}
+.avatar {
+  animation: spin 3s infinite linear;
+}
+
+/* Anything below this is just styling */
+.avatar {
+  display: block;
+  width: 50px;
+  margin: calc(50% - 25px) auto 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.path {
+  width: 200px; height: 200px;
+  padding: 20px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: #fb3;
+}
+
+
+/* width 33.33% */
+#main {
+  overflow:hidden; /* очистка обтекания */
+  max-width: 1000px;
+  width: 100%;
+  margin: 20px auto;
+  font-size: 14px;
+}
+.box-col{
+  overflow: hidden; /* розтягивает зеленый фон на все ширину */
+  background: #dddddd;
+  margin: 0 -15px;
+}
+.box-col .col{
+  float: left;
+  width: 33.3%;
+  box-sizing: border-box;
+  padding: 0 15px;
+  background: #cccccc;
 }

@@ -33,9 +33,7 @@ $(function() {
     });
 
                             /***** Aditional scripts *****/
-
-
-                                /* Text on a circle */
+                   /* Text on a circle */
 
     function $$(selector, context) {
         context = context || document;
@@ -43,28 +41,26 @@ $(function() {
         return Array.prototype.slice.call(elements);
     }
 
-    $$('.circular').forEach(function(el) {
+    $$('.pie1').forEach(function(pie) {
+        var p = parseFloat(pie.textContent);
         var NS = "http://www.w3.org/2000/svg";
-
         var svg = document.createElementNS(NS, "svg");
-        svg.setAttribute("viewBox", "0 0 100 100");
+        var circle = document.createElementNS(NS, "circle");
+        var title = document.createElementNS(NS, "title");
 
-        var circle = document.createElementNS(NS, "path");
-        circle.setAttribute("d", "M0,50 a50,50 0 1,1 0,1z");
-        circle.setAttribute("id", "circle");
+        circle.setAttribute("r", 16);
+        circle.setAttribute("cx", 16);
+        circle.setAttribute("cy", 16);
+        circle.setAttribute("stroke-dasharray", p + " 100");
 
-        var text = document.createElementNS(NS, "text");
-        var textPath = document.createElementNS(NS, "textPath");
-        textPath.setAttributeNS("http://www.w3.org/1999/xlink", 'xlink:href', '#circle');
-        textPath.textContent = el.textContent;
-        text.appendChild(textPath);
-
+        svg.setAttribute("viewBox", "0 0 32 32");
+        title.textContent = pie.textContent;
+        pie.textContent = '';
+        svg.appendChild(title);
         svg.appendChild(circle);
-        svg.appendChild(text);
-
-        el.textContent = '';
-        el.appendChild(svg);
+        pie.appendChild(svg);
     });
+
 
 
                  /*De-emphasizing by blurring (AND dimming) */

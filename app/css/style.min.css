@@ -7105,45 +7105,24 @@ section {
   padding: 0; }
 
 /* Simple sector diagrams */
+/** Static pie charts */
 .pie {
-  position: relative;
+  margin: 0 auto;
   width: 100px;
   height: 100px;
   -webkit-border-radius: 50%;
           border-radius: 50%;
   background: yellowgreen;
-  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(0, #655));
-  background-image: -webkit-linear-gradient(left, transparent 50%, #655 0);
-  background-image: -o-linear-gradient(left, transparent 50%, #655 0);
-  background-image: linear-gradient(to right, transparent 50%, #655 0);
-  color: transparent;
-  text-align: center;
-  margin: 0 auto; }
-
-@-webkit-keyframes spin {
-  to {
-    -webkit-transform: rotate(0.5turn);
-            transform: rotate(0.5turn); } }
-
-@keyframes spin {
-  to {
-    -webkit-transform: rotate(0.5turn);
-            transform: rotate(0.5turn); } }
-
-@-webkit-keyframes bg {
-  50% {
-    background: #655; } }
-
-@keyframes bg {
-  50% {
-    background: #655; } }
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(50%, transparent), color-stop(0, currentColor));
+  background-image: -webkit-linear-gradient(left, transparent 50%, currentColor 0);
+  background-image: -o-linear-gradient(left, transparent 50%, currentColor 0);
+  background-image: linear-gradient(to right, transparent 50%, currentColor 0);
+  color: #655; }
 
 .pie::before {
   content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 50%;
+  display: block;
+  margin-left: 50%;
   height: 100%;
   -webkit-border-radius: 0 100% 100% 0 / 50%;
           border-radius: 0 100% 100% 0 / 50%;
@@ -7151,20 +7130,38 @@ section {
   -webkit-transform-origin: left;
       -ms-transform-origin: left;
           transform-origin: left;
-  -webkit-animation: spin 5s linear infinite, bg 10s step-end infinite;
-          animation: spin 5s linear infinite, bg 10s step-end infinite;
-  -webkit-animation-play-state: paused;
-          animation-play-state: paused;
-  -webkit-animation-delay: inherit;
-          animation-delay: inherit; }
+  -webkit-animation: spinn 3s linear infinite, bg 6s step-end infinite;
+          animation: spinn 3s linear infinite, bg 6s step-end infinite; }
 
-/* SVG sector diagrams */
-.svg-diagram {
+@-webkit-keyframes spinn {
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); } }
+
+@keyframes spinn {
+  to {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); } }
+
+@-webkit-keyframes bg {
+  50% {
+    background: currentColor; } }
+
+@keyframes bg {
+  50% {
+    background: currentColor; } }
+
+/* With SVG */
+.pie1 {
   width: 100px;
   height: 100px;
+  display: inline-block;
+  margin: 10px;
   -webkit-transform: rotate(-90deg);
       -ms-transform: rotate(-90deg);
-          transform: rotate(-90deg);
+          transform: rotate(-90deg); }
+
+svg {
   background: yellowgreen;
   -webkit-border-radius: 50%;
           border-radius: 50%; }
@@ -7172,9 +7169,19 @@ section {
 circle {
   fill: yellowgreen;
   stroke: #655;
-  stroke-width: 32;
-  stroke-dasharray: 38 100;
-  /* для 38% */ }
+  stroke-width: 32; }
+
+@-webkit-keyframes grow {
+  to {
+    stroke-dasharray: 100 100; } }
+
+@keyframes grow {
+  to {
+    stroke-dasharray: 100 100; } }
+
+.pie1.animated circle {
+  -webkit-animation: grow 10s infinite linear;
+          animation: grow 10s infinite linear; }
 
 /* Tabs in the form of a trapezoid */
 .nav > a {
@@ -8139,6 +8146,13 @@ input {
           transform: rotate(45deg); }
 
 /* Frame-by-frame animations */
+@-webkit-keyframes loader {
+  to {
+    background-position: -800px 0; } }
+@keyframes loader {
+  to {
+    background-position: -800px 0; } }
+
 .loader {
   width: 100px;
   height: 100px;
@@ -8231,3 +8245,65 @@ input {
 .panoramic:hover, .panoramic:focus {
   -webkit-animation-play-state: running;
           animation-play-state: running; }
+
+/* Animation along a circular path */
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0turn) translateY(-80px) translateY(50%) rotate(1turn);
+            transform: rotate(0turn) translateY(-80px) translateY(50%) rotate(1turn); }
+  to {
+    -webkit-transform: rotate(1turn) translateY(-80px) translateY(50%) rotate(0turn);
+            transform: rotate(1turn) translateY(-80px) translateY(50%) rotate(0turn); } }
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0turn) translateY(-80px) translateY(50%) rotate(1turn);
+            transform: rotate(0turn) translateY(-80px) translateY(50%) rotate(1turn); }
+  to {
+    -webkit-transform: rotate(1turn) translateY(-80px) translateY(50%) rotate(0turn);
+            transform: rotate(1turn) translateY(-80px) translateY(50%) rotate(0turn); } }
+
+.avatar {
+  -webkit-animation: spin 3s infinite linear;
+          animation: spin 3s infinite linear; }
+
+/* Anything below this is just styling */
+.avatar {
+  display: block;
+  width: 50px;
+  margin: -webkit-calc(50% - 25px) auto 0;
+  margin: calc(50% - 25px) auto 0;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  overflow: hidden; }
+
+.path {
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  margin: 0 auto;
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  background: #fb3; }
+
+/* width 33.33% */
+#main {
+  overflow: hidden;
+  /* очистка обтекания */
+  max-width: 1000px;
+  width: 100%;
+  margin: 20px auto;
+  font-size: 14px; }
+
+.box-col {
+  overflow: hidden;
+  /* розтягивает зеленый фон на все ширину */
+  background: #dddddd;
+  margin: 0 -15px; }
+
+.box-col .col {
+  float: left;
+  width: 33.3%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0 15px;
+  background: #cccccc; }
